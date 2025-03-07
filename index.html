@@ -44,24 +44,32 @@
         .mcd-logo img {
             width: 40px;
             height: 40px;
-            border-radius: 10px 10px 10px 10px;
+            border-radius: 10px;
             padding: 1px;
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
         }
 
-        
+        .mcd-logo img:hover {
+            transform: scale(1.1);
+        }
 
         .time {
             font-size: 1.2em;
             font-weight: bold;
         }
 
-        /* Main Container */
-      
+        /* Grid Wrapper */
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 90%;
+            max-width: 920px;
+            margin-top: 20px;
+        }
 
         .section {
-            flex: 1;
             background: white;
             padding: 20px;
             border-radius: 15px;
@@ -74,18 +82,12 @@
             margin-bottom: 15px;
         }
 
-        /* Grid Items */
-        .grid-wrapper {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
-        }
         .items {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 10px;
         }
+
         .item {
             display: flex;
             justify-content: center;
@@ -96,25 +98,31 @@
             cursor: pointer;
             transition: background 0.3s ease-in-out;
         }
+
         .item:hover {
             background: #bfbfbf;
         }
+
         .ready .item {
             background: #28a745;
             color: white;
         }
+
         .ready .item:hover {
             background: #218838;
         }
+
         .ready .item:first-child {
             grid-column: span 3;
             font-size: 1.5em;
             text-align: center;
         }
+
         .link-container {
-            text-align: bottom left;
+            text-align: center;
             margin-top: 20px;
         }
+
         .link-container a {
             text-decoration: none;
             color: #ffffff;
@@ -123,16 +131,26 @@
             border-radius: 10px;
             transition: background 0.3s ease-in-out;
         }
+
         .link-container a:hover {
             background: rgb(17, 0, 116);
         }
 
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
+            .grid-wrapper {
+                grid-template-columns: 1fr;
             }
+
             .ready .item:first-child {
                 grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mcdonald-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
             }
         }
     </style>
@@ -162,8 +180,6 @@
                 <div class="item">3885</div>
                 <div class="item">3885</div>
                 <div class="item">3885</div>
-                <div class="item">3885</div>
-                <div class="item">3885</div>
             </div>
         </div>
         <div class="section ready">
@@ -177,11 +193,10 @@
                 <div class="item">3885</div>
                 <div class="item">3885</div>
                 <div class="item">3885</div>
-                <div class="item">3885</div>
-                <div class="item">3885</div>
             </div>
         </div>
     </div>
+
     <div class="link-container">
         <a href="https://sidebar-sticky-header.vercel.app/" target="_blank" rel="noopener noreferrer">
             <b>CLICK HERE TO VIEW TASK 2</b>
