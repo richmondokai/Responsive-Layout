@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Queue Display</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Apply DM Sans as the default font -->
     <style>
         /* Base Font Size */
         html {
@@ -28,16 +27,14 @@
             background: linear-gradient(67.75deg, #FFFFFF 19.18%, #FFEBE7 75.31%);
             padding: 1rem;
             font-family: 'DM Sans', sans-serif;
-            
-            
         }
 
         /* McDonald's Info Card */
         .mcdonald-card {
             display: flex;
             width: 100%;
-            height: auto;
-            padding: 1rem; /* 16px */
+            height: 92px;
+            padding: 16px; /* 16px */
             justify-content: space-between;
             align-items: center;
             border-radius: 16px; /* Keep px for precision */
@@ -47,111 +44,111 @@
         .mcd-logo {
             display: flex;
             align-items: center;
-            gap: 1rem; /* 16px */
+            gap: 16px; /* 16px */
             font-weight: 500;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.5rem; /* 24px */
+            font-size: 20px; /* 20px */
             letter-spacing: -1%;
         }
 
         .mcd-logo img {
-            width: 3.75rem; /* 60px */
-            height: 3.75rem; /* 60px */
+            width: 60px;
+            height: 60px;
             border-radius: 16px; /* Keep px for precision */
         }
 
         .time {
             font-weight: 700;
-            font-size: 2rem; /* 32px */
-            line-height: 2.5rem; /* 40px */
+            font-size: 32px;
             letter-spacing: -3%;
         }
 
         /* Grid Wrapper */
         .grid-wrapper {
             display: grid;
-            grid-template-columns: 2fr 1fr; /* Always side by side */
-            gap: 0.625rem; /* 10px */
+            grid-template-columns: 1fr 383px; /* Preparing section takes remaining space, Ready section fixed at 383px */
+            gap: 16px;
             width: 100%;
-            flex-wrap: wrap;
             flex-grow: 1; /* Expand to fill remaining vertical space */
-            margin-top: 1rem; /* 16px */
+            margin-top: 16px;
         }
 
+        /* General Section Styles */
         .section {
-            background: white;
-            padding: 0.5rem; /* 8px */
-            border-radius: 16px; /* Keep px for precision */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Keep px for precision */
             display: flex;
             flex-direction: column;
-            height: 99%; /* Take full height of parent */
-            align-content: center;
-            display: flex;
-            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Preparing Section */
+        .section-preparing {
+            max-width: 100%; /* Adjust width dynamically */
+            height: 100%;
+            border-radius: 24px;
+            padding: var(--Spacing-6, 24px);
             gap: var(--Spacing-6, 24px);
-            flex: 1 0 0;
+            background: var(--Background-White-100, #FFFFFF);
+        }
+
+        /* Ready Section */
+        .section-ready {
+            width: 383px; /* Fixed width */
+            height: 100%;
+            border-radius: 24px;
+            padding: var(--Spacing-6, 24px);
+            gap: var(--Spacing-6, 24px);
+            background: var(--Background-White-100, #FFFFFF);
         }
 
         .section h2 {
             text-align: center;
-            padding-top: 1rem; /* 16px */
             font-weight: 700;
-            font-size: 2rem; /* 32px */
-            line-height: 2.5rem; /* 40px */
+            font-size: 32px;
             letter-spacing: -3%;
-           
         }
 
         .box-item {
-            padding: 1rem; /* 16px */
-            border-radius: 16px; /* Keep px for precision */
             overflow-y: auto; /* Enable vertical scrolling */
-            flex-grow: 1; /* Expand to fill remaining vertical space */
-            width: 100%;
+            flex-grow: 2; /* Expand to fill remaining vertical space */
         }
 
         .items {
             display: flex;
+            gap: 8px;
             justify-content: center;
             align-items: flex-start;
-            align-content: flex-start;
-            gap: 8px var(--Spacing-2, 8px);
-            align-self: stretch;
             flex-wrap: wrap;
+            flex-grow: 1;
         }
 
         .item {
             display: flex;
             width: 106px;
             height: 64px;
-            padding: 8px var(--Spacing-6, 24px);
-            justify-content: center;
             align-items: center;
-            gap: 8px;
-            border-radius: var(--Round-3, 16px);
+            border-radius: 16px;
             background: var(--Background-Black-10, rgba(0, 0, 0, 0.10));
             font-weight: 700;
             font-size: 24px;
-            font-style: normal;
-            line-height: 32px; /* 133.333% */
             letter-spacing: -0.48px;
-        
+            justify-content: center;
         }
 
-        .ready .item {
+        .section-ready .item {
             background: var(--Background-Status-Accepted, #119717);
             color: white;
         }
 
-        .ready .item:first-child {
-            grid-column: span 3; /* Span 3 columns for the first child */
+        .section-ready .item:first-child {
+            justify-content: center;
             width: 100%; /* Full width */
             height: 128px; /* 128px */
             font-size: 32px; /* 32px */
+            padding: var(--Spacing-6, 24px);
         }
 
-        .preparing .item {
+        .section-preparing .item {
             background: var(--Background-Black-10, #0000001A);
             color: black;
         }
@@ -159,104 +156,108 @@
         /* Responsive Adjustments for Larger Screens */
         @media (min-width: 64rem) { /* 1024px */
             .section h2 {
-                font-size: 2.5rem; /* 40px */
+                font-size: 32px;
             }
 
             .item {
-                height: 5rem; /* 80px */
-                font-size: 1.75rem; /* 28px */
+                height: 64px;
+                font-size: 24px;
             }
 
-            .ready .item:first-child {
-                height: 10rem; /* 160px */
-                font-size: 2.5rem; /* 40px */
+            .section-ready .item:first-child {
+                height: 128px;
+                font-size: 32px;
             }
         }
 
         @media (min-width: 90rem) { /* 1440px */
             .section h2 {
-                font-size: 3rem; /* 48px */
+                font-size: 32px;
             }
 
             .item {
-                height: 6rem; /* 96px */
-                font-size: 2rem; /* 32px */
+                height: 64px;
+                font-size: 24px;
             }
 
-            .ready .item:first-child {
-                height: 12rem; /* 192px */
-                font-size: 3rem; /* 48px */
+            .section-ready .item:first-child {
+                height: 128px;
+                font-size: 32px;
             }
         }
 
         @media (min-width: 120rem) { /* 1920px */
             .section h2 {
-                font-size: 3.5rem; /* 56px */
+                font-size: 48px;
             }
 
             .item {
-                height: 7rem; /* 112px */
-                font-size: 2.5rem; /* 40px */
+                height: 96px;
+                font-size: 32px;
             }
 
-            .ready .item:first-child {
-                height: 14rem; /* 224px */
-                font-size: 3.5rem; /* 56px */
+            .section-ready .item:first-child {
+                height: 192px;
+                font-size: 48px;
             }
         }
 
-        /* Responsive Adjustments for Smaller Screens */
+        /* Responsive Adjustments for Tablet and Mobile */
         @media (max-width: 48rem) { /* 768px */
-            .ready .item:first-child {
-                grid-column: span 1; /* Reset to normal grid behavior */
-                width: 100%; /* Full width of grid cell */
+            .grid-wrapper {
+                grid-template-columns: 1fr 1fr; /* Equal width for both sections */
+                gap: 8px; /* Reduce gap for smaller screens */
             }
 
-            .mcdonald-card {
-                flex-direction: row; /* Ensure logo and time remain side by side */
-                text-align: left; /* Align text to the left */
-                gap: 0.5rem; /* 16px */
-            }
-
-            .time {
-                font-size: 1.5rem; /* 24px */
+            .section {
+                height: auto; /* Allow height to adjust based on content */
+                min-height: 400px; /* Minimum height for smaller screens */
             }
 
             .section h2 {
-                font-size: 1.25rem; /* 20px */
-            }
-
-            .items {
-                grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr)); /* 80px */
+                font-size: 24px; /* Smaller font size for headings */
             }
 
             .item {
-                height: 3.125rem; /* 50px */
-                font-size: 1.125rem; /* 18px */
+                width: 80px; /* Smaller width for items */
+                height: 50px; /* Smaller height for items */
+                font-size: 18px; /* Smaller font size for items */
+            }
+
+            .section-ready .item:first-child {
+                height: 100px; /* Smaller height for the first item in "Ready" */
+                font-size: 24px; /* Smaller font size for the first item in "Ready" */
             }
         }
 
         @media (max-width: 30rem) { /* 480px */
+            .grid-wrapper {
+                grid-template-columns: 1fr 1fr; /* Equal width for both sections */
+                gap: 8px; /* Reduce gap for smaller screens */
+            }
+
             .mcd-logo img {
-                width: 2.5rem; /* 40px */
-                height: 2.5rem; /* 40px */
+                width: 40px;
+                height: 40px;
             }
 
             .time {
-                font-size: 1.25rem; /* 20px */
+                font-size: 20px;
             }
 
             .section h2 {
-                font-size: 1.125rem; /* 18px */
-            }
-
-            .items {
-                grid-template-columns: repeat(auto-fit, minmax(3.75rem, 1fr)); /* 60px */
+                font-size: 20px;
             }
 
             .item {
-                height: 2.5rem; /* 40px */
-                font-size: 1rem; /* 16px */
+                width: 60px; /* Even smaller width for items */
+                height: 40px; /* Even smaller height for items */
+                font-size: 16px; /* Even smaller font size for items */
+            }
+
+            .section-ready .item:first-child {
+                height: 80px; /* Even smaller height for the first item in "Ready" */
+                font-size: 20px; /* Even smaller font size for the first item in "Ready" */
             }
         }
     </style>
@@ -273,7 +274,8 @@
 
     <!-- Main Content -->
     <div class="grid-wrapper">
-        <div class="section preparing">
+        <!-- Preparing Section -->
+        <div class="section section-preparing">
             <h2>Preparing</h2>
             <div class="box-item">
                 <div class="items">
@@ -295,13 +297,42 @@
                     <div class="item">3885</div>
                     <div class="item">3885</div>
                     <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
                 </div>
             </div>
         </div>
-        <div class="section ready">
+
+        <!-- Ready Section -->
+        <div class="section section-ready">
             <h2>Ready</h2>
             <div class="box-item">
                 <div class="items">
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
+                    <div class="item">3885</div>
                     <div class="item">3885</div>
                     <div class="item">3885</div>
                     <div class="item">3885</div>
