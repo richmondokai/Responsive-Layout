@@ -7,270 +7,185 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Base Font Size */
-        html {
-            font-size: 16px; /* Base font size for rem calculations */
-            height: 100%; /* Ensure html takes full height */
-        }
+html {
+    font-size: 16px;
+    height: 100%;
+}
 
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%; /* Ensure body takes full height */
-            background: linear-gradient(67.75deg, #FFFFFF 19.18%, #FFEBE7 75.31%);
-            padding: 1rem;
-            font-family: 'DM Sans', sans-serif;
-        }
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(67.75deg, #FFFFFF 19.18%, #FFEBE7 75.31%);
+    font-family: 'DM Sans', sans-serif;
+    margin: 16px;
+}
 
-        /* McDonald's Info Card */
-        .mcdonald-card {
-            display: flex;
-            width: 100%;
-            height: 92px;
-            padding: 16px; /* 16px */
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 16px; /* Keep px for precision */
-            background: var(--Background-Black-5, rgba(0, 0, 0, 0.05));
-        }
+/* McDonald's Info Card */
+.mcdonald-card {
+    display: flex;
+    width: 100%;
+    height: 92px;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.05);
+}
 
-        .mcd-logo {
-            display: flex;
-            align-items: center;
-            gap: 16px; /* 16px */
-            font-weight: 500;
-            font-size: 20px; /* 20px */
-            letter-spacing: -1%;
-        }
+.mcd-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -1%;
+}
 
-        .mcd-logo img {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px; /* Keep px for precision */
-        }
+.mcd-logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+}
 
-        .time {
-            font-weight: 700;
-            font-size: 32px;
-            letter-spacing: -3%;
-        }
+.time {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -3%;
+}
 
-        /* Grid Wrapper */
-        .grid-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 383px; /* Preparing section takes remaining space, Ready section fixed at 383px */
-            gap: 16px;
-            width: 100%;
-            flex-grow: 1; /* Expand to fill remaining vertical space */
-            margin-top: 16px;
-        }
+/* Grid Wrapper */
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 383px; /* Default layout for landscape */
+    gap: 16px;
+    width: 100%;
+    flex-grow: 1;
+    margin-top: 16px;
+}
 
-        /* General Section Styles */
-        .section {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Keep px for precision */
-            display: flex;
-            flex-direction: column;
-            
-        }
+/* General Section Styles */
+.section {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 24px;
+    gap: 24px;
+    background: #FFFFFF;
+}
 
-        /* Preparing Section */
-        .section-preparing {
-            max-width: 100%; /* Adjust width dynamically */
-            height: 100%;
-            border-radius: 24px;
-            padding: var(--Spacing-6, 24px);
-            gap: var(--Spacing-6, 24px);
-            background: var(--Background-White-100, #FFFFFF);
-        }
+.section h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -3%;
+}
 
-        /* Ready Section */
-        .section-ready {
-            width: 383px; /* Fixed width */
-            height: 100%;
-            border-radius: 24px;
-            padding: var(--Spacing-6, 24px);
-            gap: var(--Spacing-6, 24px);
-            background: var(--Background-White-100, #FFFFFF);
-        }
+.box-item {
+    overflow-y: auto;
+    flex-grow: 2;
+}
 
-        .section h2 {
-            text-align: center;
-            font-weight: 700;
-            font-size: 32px;
-            letter-spacing: -3%;
-        }
+.items {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
 
-        .box-item {
-            overflow-y: auto; /* Enable vertical scrolling */
-            flex-grow: 2; /* Expand to fill remaining vertical space */
-        }
+.item {
+    display: flex;
+    width: 106px;
+    height: 64px;
+    align-items: center;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.10);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.48px;
+    justify-content: center;
+}
 
-        .items {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            flex-grow: 1;
-        }
+.section-ready .item {
+    background: #119717;
+    color: white;
+}
 
-        .item {
-            display: flex;
-            width: 106px;
-            height: 64px;
-            align-items: center;
-            border-radius: 16px;
-            background: var(--Background-Black-10, rgba(0, 0, 0, 0.10));
-            font-weight: 700;
-            font-size: 24px;
-            letter-spacing: -0.48px;
-            justify-content: center;
-        }
+.section-ready .item:first-child {
+    justify-content: center;
+    width: 100%;
+    height: 128px;
+    font-size: 32px;
+    padding: 24px;
+}
 
-        .section-ready .item {
-            background: var(--Background-Status-Accepted, #119717);
-            color: white;
-        }
+/* Responsive Adjustments for Portrait Mode */
+@media (orientation: portrait) {
+    .grid-wrapper {
+        grid-template-columns: 1fr 1fr; /* Equal width for both sections */
+    }
 
-        .section-ready .item:first-child {
-            justify-content: center;
-            width: 100%; /* Full width */
-            height: 128px; /* 128px */
-            font-size: 32px; /* 32px */
-            padding: var(--Spacing-6, 24px);
-        }
+    .section {
+        height: auto; /* Allow height to adjust */
+    }
 
-        .section-preparing .item {
-            background: var(--Background-Black-10, #0000001A);
-            color: black;
-        }
+    .item {
+        
+        font-size: 18px; /* Smaller font size for portrait */
+    }
 
-        /* Responsive Adjustments for Larger Screens */
-        @media (min-width: 64rem) { /* 1024px */
-            .section h2 {
-                font-size: 32px;
-            }
+    .section-ready .item:first-child {
+        
+        font-size: 24px; /* Smaller font size for the first item in portrait */
+    }
+}
 
-            .item {
-                height: 64px;
-                font-size: 24px;
-            }
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 768px) {
+    .section h2 {
+        font-size: 24px;
+    }
 
-            .section-ready .item:first-child {
-                height: 128px;
-                font-size: 32px;
-            }
-        }
+    .item {
+        
+        font-size: 18px;
+    }
 
-        @media (min-width: 90rem) { /* 1440px */
-            .section h2 {
-                font-size: 32px;
-            }
+    .section-ready .item:first-child {
+        
+        font-size: 24px;
+    }
+}
 
-            .item {
-                height: 64px;
-                font-size: 24px;
-            }
+@media (max-width: 480px) {
 
-            .section-ready .item:first-child {
-                height: 128px;
-                font-size: 32px;
-            }
-        }
+    .time {
+        font-size: 20px;
+    }
 
-        @media (min-width: 120rem) { /* 1920px */
-            .section h2 {
-                font-size: 48px;
-            }
+    .section h2 {
+        font-size: 20px;
+    }
 
-            .item {
-                height: 96px;
-                font-size: 32px;
-            }
+    .item {
+        font-size: 16px;
+    }
 
-            .section-ready .item:first-child {
-                height: 192px;
-                font-size: 48px;
-            }
-        }
-
-        /* Responsive Adjustments for Tablet and Mobile */
-        @media (max-width: 48rem) { /* 768px */
-            .grid-wrapper {
-                grid-template-columns: 1fr 1fr; /* Equal width for both sections */
-                gap: 8px; /* Reduce gap for smaller screens */
-            }
-
-            .section {
-                height: auto; /* Allow height to adjust based on content */
-                min-height: 400px; /* Minimum height for smaller screens */
-            }
-
-            .section h2 {
-                font-size: 24px; /* Smaller font size for headings */
-            }
-
-            .item {
-                width: 80px; /* Smaller width for items */
-                height: 50px; /* Smaller height for items */
-                font-size: 18px; /* Smaller font size for items */
-            }
-
-            .section-ready .item:first-child {
-                height: 100px; /* Smaller height for the first item in "Ready" */
-                font-size: 24px; /* Smaller font size for the first item in "Ready" */
-            }
-
-            .section-ready {
-                width: 100%;
-                height: 100%;
-            }
-
-            
-        }
-
-        @media (max-width: 30rem) { /* 480px */
-            .grid-wrapper {
-                grid-template-columns: 1fr 1fr; /* Equal width for both sections */
-                gap: 4px;
-            }
-
-            .mcd-logo img {
-                width: 40px;
-                height: 40px;
-            }
-
-            .time {
-                font-size: 20px;
-            }
-
-            .section h2 {
-                font-size: 20px;
-            }
-
-            .item {
-                width: 60px; /* Even smaller width for items */
-                height: 40px; /* Even smaller height for items */
-                font-size: 16px; /* Even smaller font size for items */
-            }
-
-            .section-ready {
-            width: 100%;
-            height: 100%;
-            }
-
-            .section-ready .item:first-child {
-                height: 80px; /* Even smaller height for the first item in "Ready" */
-                font-size: 20px; /* Even smaller font size for the first item in "Ready" */
-            }
-        }
+    .section-ready .item:first-child {
+        font-size: 20px;
+    }
+}
     </style>
 </head>
 <body>
